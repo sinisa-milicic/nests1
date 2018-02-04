@@ -65,7 +65,7 @@ def draw_nest(fname="test.eps", title="test",
             procedure(R)
 
 def cantor(a, b, N, r, ε=0.05, depth=15):
-    assert 0 <= r <= 1/N, "Parameter r is out of bounds, it should be nonnegative and at most 1/(N-1)!"
+    assert 0 <= r <= 1/N
     F = (1-N*r)/(N-1)
     def cantor_iterator(a, b, depth):
         Δ = b-a
