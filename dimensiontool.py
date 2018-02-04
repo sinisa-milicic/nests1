@@ -57,9 +57,9 @@ def fnest_iterator(ε, α):
 
 def draw_nest(fname="test.eps", title="test",
               func=lambda n: 1/n,
-              procedure=lambda *args: None,
+              procedure=None,
               ε=0.1, background=False):
-    assert procedure is not None, "No active procdure!"
+    assert procedure is not None
     with epsoutput(fname, title=title, ε=ε, background=background):
         for R in nest_iterator(ε, func):
             procedure(R)
@@ -82,7 +82,6 @@ def cantor(a, b, N, r, ε=0.05, depth=15):
     yield from cantor_iterator(a,b, depth)
 
 def count_cantor_nest(α, N, r, ε):
-#    print(log(ε, 1/2))
     c1 = log((1-N*r)/(N-1)/2)
     c2 = log(r)
     def l(x):
@@ -96,7 +95,6 @@ def log_count_cantor_nest(α, N, r, εs):
 
 
 def count_bifractal(α, β, ε):
-#    print(log(ε, 1/2))
     return sum(sum(fm12(ε/R, β)) for R in fnest_iterator(ε, α))
 
 def log_count_bifractal(α, β, εs):
